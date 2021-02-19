@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from buildnki.crawler import subject_crawler, parse_line, save_addurls_table
+from publiccrawler.crawler import subject_crawler, parse_line, save_addurls_table
 
 
 s3_bucket_name = 'openneuro'

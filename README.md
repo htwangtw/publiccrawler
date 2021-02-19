@@ -1,3 +1,3 @@
-# build_nki
+# Public Crawler
 
-Parse enhanced NKI dataset into Datalad dataset 
+Crawl public BIDS dataset on AWS to for `datalad addurls`
