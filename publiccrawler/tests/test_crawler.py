@@ -1,7 +1,10 @@
 from pathlib import Path
 
-from publiccrawler.crawler import subject_crawler, parse_line, save_addurls_table
+import pytest
+from click.testing import CliRunner
 
+from publiccrawler.crawler import subject_crawler, parse_line, save_addurls_table
+from publiccrawler.cli import main
 
 s3_bucket_name = 'openneuro'
 bids_prefix = 'ds000003/ds000003_R2.0.2/uncompressed'
@@ -28,3 +31,19 @@ def test_crawler(tmpdir):
         data = f.readlines()
     assert len(data) == 3
 
+
+@pytest.fixture
+def runner():
+    return CliRunner()
+
+def test_beh2bids(runner, tmpdir):
+    result = runner.invoke(main,
+        ["--s3bucket", s3_bucket_name,
+         "--prefix", bids_prefix,
+         "--output", tmpdir,
+         "sub-01"])
+    assert result.exit_code == 0
+
+    result = runner.invoke(main, ["--help"])
+    assert "stuff" in result.output
+    assert result.exit_code == 0
