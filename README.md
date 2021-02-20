@@ -4,4 +4,4 @@
 
 # Public Crawler
 
-Crawl public dataset on AWS to apss to `datalad addurls`
+ Generate `datalad addurls` required URL-FILE input from public AWS S3 bucket.
