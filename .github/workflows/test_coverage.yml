@@ -6,6 +6,8 @@ name: test and coverage
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - '**/README.md'
   pull_request:
     branches: [ main ]
 
@@ -19,7 +21,6 @@ jobs:
     steps:
     - name: Clone repo
       uses: actions/checkout@v2
-
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
@@ -36,10 +37,9 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
+    - name: Test and return coverage report
       run: |
         pytest --cov publiccrawler --cov-report xml
-        
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1.2.1
       with:
