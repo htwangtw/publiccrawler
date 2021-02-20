@@ -4,4 +4,4 @@
 
 # Public Crawler
 
-Crawl public BIDS dataset on AWS to for `datalad addurls`
+Crawl public dataset on AWS to apss to `datalad addurls`
