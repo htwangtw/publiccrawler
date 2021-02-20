@@ -16,7 +16,7 @@ def subject_crawler(s3bucket, prefix, subject):
                              config=Config(signature_version=UNSIGNED))
     bidsfiles = s3_client.list_objects_v2(
         Bucket=s3bucket,
-        Prefix=prefix + f"/{subject}/")
+        Prefix=f"{prefix}/{subject}/")
     return [d["Key"] for d in bidsfiles["Contents"]]
 
 def parse_line(s3bucket, subject, content):

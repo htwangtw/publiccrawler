@@ -12,7 +12,7 @@ if "__main__" == __name__:
         description="Crawl public BIDS dataset on AWS to datalad",
         name='publiccrawler',
         packages=find_packages(),
-        version='0.0.1',
+        version='0.1.0',
         install_requires=['boto', 'click'],
         entry_points='''
         [console_scripts]
