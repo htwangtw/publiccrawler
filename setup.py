@@ -16,6 +16,6 @@ if "__main__" == __name__:
         install_requires=['boto', 'click'],
         entry_points='''
         [console_scripts]
-        s3crawler=publiccrawler.cli:main
+        s3crawler=publiccrawler.crawler:cli
     ''',
     )
